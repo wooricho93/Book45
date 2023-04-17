@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.ReplyMapper">
+    <insert id="enrollReply">
+          insert into reply (replyNum, boardNum, memberId, nickname, content, secret)
+          values (reply_seq.nextval, #{boardNum}, #{memberId}, #{nickname}, #{content}, #{secret})
+    </insert>
+   
+      <select id="getReplyList" resultType="com.book45.domain.ReplyDTO">
+     
+        <![CDATA[
+      select * from(        
+         select rownum as rn, replyNum, boardNum, memberId, nickname, content, replyDate, secret
+         from reply
+         where rownum <= #{pageNum} * #{amount}  and boardNum = #{boardNum}   
+         order by replyDate desc     
+           )
+        where rn > (#{pageNum} -1) * #{amount}
+        ]]>   
+        
+     </select>
+     
+     <select id="getReplyTotal" resultType="int">
+     
+        select count(*)
+        from reply
+        where boardNum = #{boardNum}
+     
+     </select>
+     
+     <update id="updateReply">
+     
+        update reply set content = #{content}, secret = #{secret}
+        where replyNum = #{replyNum}
+        
+     </update>
+     
+     <select id="getUpdateReply" resultType="com.book45.domain.ReplyDTO">
+   
+      select * from reply
+      where replyNum = #{replyNum}
+      
+   </select>
+   
+   <delete id="deleteReply">
+     
+        delete from reply
+        where replyNum = #{replyNum}
+        
+     </delete>
+</mapper>

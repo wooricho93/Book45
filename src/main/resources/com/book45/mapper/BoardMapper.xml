@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.BoardMapper">
+   <select id="getList" resultMap="boardList">
+      select * from board order by num desc
+   </select>
+   <resultMap type="com.book45.domain.BoardVO" id="boardList">
+      <result property="num" column="num"></result>
+      <result property="memberId" column="memberId"></result>
+      <result property="pass" column="pass"></result>
+      <result property="title" column="title"></result>
+      <result property="content" column="content"></result>
+      <result property="writeDate" column="writeDate"></result>
+      <result property="updateDate" column="updateDate"></result>
+      <result property="readCount" column="readCount"></result>
+      <result property="replyCnt" column="replyCnt"></result>
+
+   </resultMap>
+   
+   <sql id="criteria">
+      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+         <foreach item="type" collection="typeArr">
+            <trim prefix="OR">
+               <choose>
+                  <when test="type == 'T'.toString()">   
+                     title like '%' || #{keyword} || '%'
+                  </when>
+                  <when test="type == 'C'.toString()">
+                     content like '%' || #{keyword} || '%'
+                  </when>
+                  <when test="type == 'W'.toString()">
+                     memberId like '%' || #{keyword} || '%'
+                  </when>
+               </choose>
+            </trim>
+         </foreach>
+      </trim>
+   </sql>
+   
+   <select id="getListWithPaging" resultMap="boardList">
+      <![CDATA[
+      select
+         num, title, content, memberId, writedate, updatedate, readCount, replyCnt, blind
+      from
+         (
+         select /*+ INDEX(board idx_board) */
+            rownum rn, num, title, content, memberId, writedate, updatedate, readCount, replyCnt, blind
+         from board
+         where
+      ]]>
+         
+         <include refid="criteria"></include>
+         
+      <![CDATA[
+         rownum <= #{pageNum} * #{amount}
+         )
+      where rn > (#{pageNum} -1) * #{amount}
+      ]]>
+   </select>
+   
+   <insert id="insert">
+      insert into board(num, pass, title, content, memberId) values(board_seq.nextval, #{pass}, 
+      #{title}, #{content}, #{memberId})
+   </insert>
+   
+   <insert id="insertSelectKey">
+      <selectKey keyProperty="num" order="BEFORE" resultType="int">
+         select board_seq.nextval from dual
+      </selectKey>
+      
+      insert into board(num, pass, title, content, memberId) values(#{num}, #{pass}, #{title}
+      , #{content}, #{memberId})
+   </insert>
+   
+   <select id="read" resultMap="boardList">
+      select * from board where num = #{num}
+   </select>
+   
+   <delete id="delete">
+      delete from board where num = #{num}
+   </delete>
+   
+   <update id="update">
+      update board set title = #{title}, content = #{content}, updateDate = sysdate, blind = #{blind}
+      where num = #{num}
+   </update>
+   
+   <select id="getTotalCount" resultType="int">
+      select count(*) from board 
+      where
+      
+      <include refid="criteria"></include>
+      
+      num > 0
+   </select>
+   
+   <update id="updateReplyCnt">
+		update board 
+		set replyCnt = replyCnt + #{amount}
+		where num = #{num}
+   </update>
+   
+    <select id="getTotalReplyCnt">
+    	select replyCnt from board
+    	where num = #{num}
+    </select>
+   
+   <update id="updateReadCnt">
+		update board
+		set readcount = readcount + 1
+		where num = #{num}
+	</update>
+	
+	<select id="getBoardNumTitle" resultMap="boardList">
+		select num, title from board
+		where num = #{num}
+	</select>
+</mapper>

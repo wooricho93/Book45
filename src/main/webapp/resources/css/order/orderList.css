@@ -1,0 +1,168 @@
+/* wrap */
+#content_area {
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 200px;
+}
+
+h2 {
+	margin: 100px auto 80px auto;
+}
+
+table {
+	width: 1150px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+table tr {
+	line-height: 40px;
+}
+
+table tr th {
+	background-color: #8c8ce8;
+	color: white;
+	font-weight: normal;
+}
+table tr th, td {
+	border-collapse: collapse;
+	border: 1px solid #999999;
+}
+
+table td {
+	line-height: 50px;
+	font-size: 15px;
+}
+
+table tr.record:last-child {
+	border-bottom: 1.5px solid #8c8ce8;
+}
+table tr.record td {
+	border-bottom: 1px solid #dddddd;
+}
+table tr.record td input {
+	border: 1px solid #999999;
+	background-color: white;
+	border-radius: 0px;
+}
+
+#btn {
+	padding: 5px 10px;
+}
+
+#cover {
+	width: 150px;
+	height: 200px;
+	padding: 10px 15px 10px 10px;
+}
+
+.address_btn {
+	padding: 5px 10px;
+	border-radius: 0;
+	border: 1px solid #999999;
+	background-color: white;
+	cursor: pointer;
+}
+
+.address_btn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+.addressInfo_input_div input {
+	padding: 5px 10px;
+	border-radius: 0;
+	border: 1px solid #999999;
+}
+
+.addressInfo_input_div input:focus {
+	outline: none;
+	border: 2px solid #8c8ce8;
+}
+
+.address_search_btn {
+	width: 70px;
+	height: 27px;
+	border: 1px solid #999999;
+	border-radius: 0;
+	background-color: white;
+	cursor: pointer;
+}
+
+.address_search_btn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+.address1_input {
+	width: 300px;
+}
+
+.address2_input, .address3_input {
+	width: 400px;
+}
+
+.goodsKind_div {
+	width: 1150px;
+	height: 50px;
+	padding: auto;
+	border: none;
+	background-color: #f9f9f9;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+
+.point_div input {
+	padding: 5px 10px;
+	border-radius: 0;
+	border: 1px solid #999999;
+	width: 100px;
+}
+
+.point_div input:focus {
+	outline: none;
+	border: 2px solid #8c8ce8;
+}
+
+.order_point_input_btn {
+	padding: 5px 10px;
+	border-radius: 0;
+	border: 1px solid #999999;
+	background-color: white;
+	cursor: pointer;
+}
+
+.order_point_input_btn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+.totalInfoPrice {
+	width: 1150px;
+	height: 100px;
+	border: 1px dashed black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.orderBtn {
+	width: 215px;
+	height: 50px;
+	margin-top: 50px;
+	font-size: 16px;
+	border-radius: 0;
+	border: 1px solid #999999;
+	background-color: white;
+	cursor: pointer;
+}
+
+.orderBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}

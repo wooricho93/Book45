@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.OrderMapper">
+<!-- 주문 상품(책) 정보 -->
+<select id="getBooksInfo" resultType="com.book45.domain.OrderPageItemDTO">
+	select isbn, title, price, pictureUrl from book where isbn = #{isbn}
+</select>
+<!-- 주문 상품(앨범) 정보 -->
+<select id="getAlbumsInfo" resultType="com.book45.domain.OrderPageItemDTO">
+	select productNum, albumTitle, albumPrice, albumPictureUrl from album where productNum = #{productNum}
+</select>
+<!-- 도서 정보 -->
+<select id="getOrderBooksInfo" resultType="com.book45.domain.OrderItemDTO">
+	select isbn, price from book where isbn = #{isbn}
+</select> 
+<!-- 앨범 정보 -->
+<select id="getOrderAlbumsInfo" resultType="com.book45.domain.OrderItemDTO">
+	select productnum, albumPrice from album where productNum = #{productNum}
+</select> 
+<!-- 주문 테이블 등록 -->
+<insert id="enrollOrder">
+	insert into orders(orderNum, id, name, phone, zipCode, addressRoad, addressDetail, orderState, deliveryCost, usePoint)
+	values(#{orderNum}, #{id}, #{name}, #{phone}, #{zipCode}, #{addressRoad}, #{addressDetail}, '배송준비', #{deliveryCost}, #{usePoint})
+</insert> 
+<!-- 도서 주문아이템 테이블 등록 -->
+<insert id="enrollOrderBookItem">
+	insert into orderItem(orderItemNum, orderNum, id, isbn, amount, price)
+	values(orderItem_seq.nextval, #{orderNum}, #{id}, #{isbn}, #{amount}, #{price})
+</insert>
+<!-- 앨범 주문아이템 테이블 등록 -->
+<insert id="enrollOrderAlbumItem">
+	insert into orderItem(orderItemNum, orderNum, id, productNum,  albumPrice, amount) 
+	values(orderItem_seq.nextval, #{orderNum}, #{id}, #{productNum}, #{albumPrice}, #{amount})
+</insert> 
+<!-- 주문 금액 차감 -->
+<update id="deductPoint">
+	update member set point = #{point} where id = #{id}
+</update> 
+<!-- 도서 주문 재고 차감 -->
+<update id="deductBookStock">
+	update book set stock = #{stock} where isbn= #{isbn}
+</update> 
+<!-- 앨범 주문 재고 차감 -->
+<update id="deductAlbumStock">
+	update album set stock = #{stock} where productNum= #{productNum}
+</update> 
+<!-- 주문 취소 -->
+<update id="orderCancel">
+	update orders set orderState = '주문취소' where orderNum = #{orderNum}
+</update>  
+<!-- 주문 상품 정보(주문취소) -->
+<select id="getOrderItemInfo" resultType="com.book45.domain.OrderItemDTO">
+	select * from orderItem where orderNum = #{orderNum}
+</select>
+<!--  주문 정보(주문취소) -->
+<select id="getOrder" resultType="com.book45.domain.OrderDTO">
+	select * from orders where orderNum = #{orderNum}
+</select>  
+  <!-- 도서  주문내역 상세보기 -->
+   <select id="bookOrderDetail" resultType="com.book45.domain.OrderListDTO">
+   select o.orderNum, o.id, o.name, o.phone, o.orderDate, o.zipCode, o.addressRoad, o.orderState, o.deliveryCost, o.usePoint, 
+         oi.isbn, oi.amount,
+         b.title, b.price, b.pictureurl
+      from orders o 
+         left join orderItem oi on o.orderNum = oi.orderNum
+         left join book b on oi.isbn = b.isbn
+         
+         where o.id = #{id} and o.orderNum = #{orderNum}
+   </select>   
+   
+   <!--  앨범 주문내역 상세보기 -->
+   <select id="albumOrderDetail" resultType="com.book45.domain.OrderListDTO">
+   select o.orderNum, o.id, o.name, o.phone, o.orderDate, o.zipCode, o.addressRoad, o.orderState, o.deliveryCost, o.usePoint, 
+         oi.productNum, oi.amount,
+         a.albumTitle, a.albumPrice, a.albumPictureUrl
+      from orders o 
+         left join orderItem oi on o.orderNum = oi.orderNum
+         left join album a on oi.productNum = a.productNum
+         
+         where o.id = #{id} and o.orderNum = #{orderNum}
+   </select>
+</mapper>

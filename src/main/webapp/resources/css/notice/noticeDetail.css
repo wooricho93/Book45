@@ -1,0 +1,57 @@
+/* wrap */
+#wrap {
+	margin: 50px auto;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 200px;
+	width: 1150px;
+}
+
+#wrap h1 {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+#noticeHead {
+	padding: 20px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#noticeHead h1 {
+	margin-bottom: 10px;
+	float: left;
+}
+
+#noticeHead #headerBox {
+	clear: both;
+	margin-bottom: 10px;
+}
+
+#noticeHead #headerBox strong {
+	float: left;
+}
+
+#noticeHead #headerBox p {
+	float: right;
+}
+
+#noticeBody {
+	padding: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #cccccc;
+	height: 300px;
+}
+
+#listBtn, #updateBtn {
+	background-color: white;
+	border: 1px solid #999999;
+	padding: 10px 15px;
+	margin-left: 5px;
+	margin-bottom: 100px;
+	cursor: pointer;
+}
+
+#listBtn:hover, #updateBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}

@@ -1,0 +1,290 @@
+#container {
+	margin: 50px auto;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 200px;
+	width: 1150px;
+}
+
+#container h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#container table {
+	width: 100%;
+	align: center;
+	text-align: center;
+	border-collapse: collapse;
+	margin-bottom: 100px;
+}
+
+#container table tr {
+	line-height: 30px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#container table tr:first-child {
+	border-bottom: none;
+}
+
+#container table tr:last-child {
+	border-bottom: 2px solid #eeeeee;
+}
+
+#container table th {
+	background-color: #8c8ce8;
+	color: white;
+	font-weight: normal;
+}
+
+#container table tr td {
+	font-size: 15px;
+}
+
+#container table tr td a {
+	color: black;
+}
+
+#container table tr td a:hover {
+	color: #8c8ce8;
+	text-decoration: underline;
+}
+
+#getHead {
+	padding: 20px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#getHead h1 {
+	margin-bottom: 10px;
+	float: left;
+}
+
+#getHead #headBox {
+	clear: both;
+	margin-bottom: 10px;
+}
+
+#getHead #headBox strong {
+	float: left;
+}
+
+#getHead #headBox p {
+	float: right;
+}
+
+#boardCon {
+	padding: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #cccccc;
+	height: 300px;
+}
+
+.listBtn {
+	width: 100px;
+	height: 30px;
+	outline: none;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 1px solid #999;
+}
+
+.listBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+#UpdateBtn, #updateBtn {
+	width: 100px;
+	height: 30px;
+	outline: none;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 1px solid #999;
+}
+
+#UpdateBtn:hover, #updateBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+/* 리뷰쓰기 버튼 */
+.reply_button_wrap {
+	padding: 10px;
+	float: right;
+}
+
+.reply_button_wrap button {
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 5px 12px;
+	cursor: pointer;
+	border: 1px solid #999;
+	outline: none;
+}
+
+.reply_button_wrap button:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+/* 리뷰 영역 */
+.content_bottom {
+	width: 100%;
+	margin: 10px auto;
+	border: 1px solid #999;
+}
+
+.panel-heading {
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+}
+
+.reply_content_ul {
+	list-style: none;
+	clear: both;
+}
+
+.comment_wrap {
+	position: relative;
+	border-bottom: 1px dotted #d4d4d4;
+	padding: 14px 0 10px 0;
+	font-size: 14px;
+}
+/* 리뷰 머리 부분 */
+.reply_top {
+	padding-bottom: 10px;
+	margin-left: 10px;
+}
+
+#textspan {
+	float: left;
+}
+
+.id_span {
+	padding: 0 5px 0 3px;
+	font-weight: bold;
+}
+
+.date_span {
+	padding: 0 5px 0;
+}
+/* 리뷰 컨텐트 부분 */
+.reply_bottom {
+	padding-bottom: 10px;
+	margin-left: 10px;
+	clear: both;
+}
+
+/* 리뷰 선 */
+.reply_line {
+	width: 80%;
+	margin: auto;
+	border-top: 1px solid #c6c6cf;
+}
+
+.reply_subject {
+	padding: 10px;
+	float: left;
+	margin-top: 5px;
+}
+
+/* 리뷰 제목 */
+.reply_subject h2 {
+	padding: 15px 0 5px 5px;
+}
+
+/* pageMaker */
+.repy_pageInfo_div {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.pageMaker {
+	list-style: none;
+	display: inline-block;
+}
+
+.pageMaker_btn {
+	float: left;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	margin-left: 20px;
+	font-size: 13px;
+	cursor: pointer;
+	border: 1px solid #999999;
+}
+
+.pageMaker_btn a {
+	color: black;
+}
+
+.pageMaker_btn:hover {
+	background-color: #d7d7f7;
+}
+
+.active {
+	background-color: #8c8ce8;
+	font-weight: 400;
+}
+
+.active a {
+	color: white;
+}
+
+.next, .prev {
+	border: 1px solid #ccc;
+	padding: 0 10px;
+	width: 40px;
+}
+
+/* 리뷰 없는 경우 div */
+.reply_not_div {
+	text-align: center;
+}
+
+.reply_not_div span {
+	display: block;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#updelBtn {
+	float: right;
+	margin-right: 15px;
+}
+
+/* 리뷰 수정 삭제 버튼 */
+.update_reply_btn {
+	font-weight: bold;
+	background-color: #b7b399;
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 5px 0 30px;
+	border-radius: 6px;
+	color: white;
+	cursor: pointer;
+}
+
+.delete_reply_btn {
+	font-weight: bold;
+	background-color: #e7578f;
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 6px;
+	color: white;
+	cursor: pointer;
+}

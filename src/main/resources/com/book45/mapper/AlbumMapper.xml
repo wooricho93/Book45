@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.AlbumMapper">
+<select id="getList" resultType="com.book45.domain.AlbumVO">
+	select * from album where num > 0
+</select>
+<insert id="insert">
+	insert into
+	album(num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg, albumPictureUrl, stock)
+	values (album_seq.nextval, #{productNum}, #{category}, #{albumTitle},
+	#{albumPrice}, #{singer}, #{ent}, #{releaseDate},#{ratingAvg}, #{albumPictureUrl}, #{stock})
+</insert>
+<insert id="insertSelectKey">
+	<selectKey keyProperty="num" order="BEFORE" resultType="int">
+		select album_seq.nextval from dual
+	</selectKey>
+
+	insert into
+	album(num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg, albumPictureUrl, stock)
+	values (#{num}, #{productNum}, #{category}, #{albumTitle},
+	#{albumPrice}, #{singer}, #{ent}, #{releaseDate},#{ratingAvg}, #{albumPictureUrl}, #{stock})
+
+</insert>
+<select id="read" resultType="com.book45.domain.AlbumVO">
+	select * from album where productNum = #{productNum}
+</select>
+<delete id="delete">
+	delete from album where productNum =#{productNum}
+</delete>
+<update id="update">
+	update album set category=#{category}, albumTitle=#{albumTitle}, albumPrice=#{albumPrice},
+	singer=#{singer}, ent=#{ent},releaseDate=#{releaseDate}, albumPictureUrl=#{albumPictureUrl}, stock=#{stock} where productNum =#{productNum}
+</update>
+
+<sql id="criteria">
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'B'.toString()">
+						albumTitle like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'S'.toString()">
+						singer like '%' || #{keyword}||'%'
+					</when>
+					<when test="type == 'E'.toString()">
+						ent like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>
+	</trim>
+</sql>
+	
+<select id ="getListWithPaging" resultType="com.book45.domain.AlbumVO">
+	<![CDATA[
+		select num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg,  albumPictureUrl, stock
+		from (
+			select 
+			rownum rn, num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg, albumPictureUrl, stock
+			from album 
+			where 
+		]]>
+		
+		<include refid="criteria"></include>
+		
+		<![CDATA[	
+			rownum <= #{pageNum} * #{amount}
+		)
+		
+		where rn > (#{pageNum} -1) * #{amount} 
+		]]>
+</select>
+<select id ="getListDesc" resultType="com.book45.domain.AlbumVO">
+	<![CDATA[
+		select num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg,  albumPictureUrl, stock
+		from (
+			select /*+ INDEX_DESC(album idx_album) */
+			rownum rn, num, productNum, category, albumTitle, albumPrice, singer, ent, releaseDate, ratingAvg, albumPictureUrl, stock
+			from album 
+			where 
+		]]>
+		
+		<include refid="criteria"></include>
+		
+		<![CDATA[	
+			rownum <= #{pageNum} * #{amount}
+		)
+		
+		where rn > (#{pageNum} -1) * #{amount} 
+		]]>
+</select>
+<select id="getTotalCount" resultType="int">
+	select count(*) from album where <include refid="criteria"></include> num > 0
+</select>
+<select id="getProductNumName" resultType="com.book45.domain.AlbumVO">
+	select productNum, albumTitle from album where productNum = #{productNum}
+</select>
+<select id="getCategory" resultType="com.book45.domain.AlbumVO">
+	select * from album where category = #{category}
+</select>
+</mapper>

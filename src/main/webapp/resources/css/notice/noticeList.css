@@ -1,0 +1,167 @@
+/* container */
+#container {
+	margin: 50px auto;
+	position: relative;
+	padding-bottom: 200px;
+	width: 1150px;
+}
+
+#container h2 {
+   text-align: center;
+   margin: 100px auto 80px auto;
+}
+
+/* wrap */
+#wrap #regBtn {
+	width: 80px;
+	height: 30px;
+	float: right;
+	margin-bottom: 10px;
+	background-color: white;
+	color: black;
+	border: 1px solid #999;
+	cursor: pointer;
+	outline: none;
+}
+
+#wrap #regBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+#wrap h2 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#wrap table {
+	width: 100%;
+	align: center;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#wrap table tr {
+	line-height: 30px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#wrap table tr:last-child {
+	border-bottom: 2px solid #eeeeee;
+}
+
+#wrap table th {
+	background-color: #8c8ce8;
+	color: white;
+	font-weight: normal;
+}
+
+#wrap table tr td {
+	font-size: 15px;
+}
+
+#wrap table tr td a {
+	color: black;
+}
+
+#wrap table tr td a:hover {
+	color: #8c8ce8;
+	text-decoration: underline;
+}
+
+#btn {
+	padding: 5.5px 10px;
+	background-color: white;
+	border: 1px solid #999999;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#btn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+#listFooter {
+	width: 100%;
+	margin: 0 auto;
+	height: 100px;
+	margin-top: 20px;
+}
+
+#pageNumber {
+	width: 100%;
+	height: 25px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#pageNumber ul {
+	text-align: center;
+}
+
+#pageNumber ul li {
+	display: inline-block;
+}
+
+#pageNumber ul #pageNum2 {
+	width: 25px;
+	height: 100%;
+}
+
+#pageNumber ul li:hover {
+	background-color: #d7d7f7;
+}
+
+#pageNumber ul li a {
+	color: black;
+}
+
+#pageNumber ul li.active a {
+	color: white;
+}
+
+#pageNumber ul .paginate_button {
+	width: 35px;
+	height: 100%;
+	border: 1px solid #999999;
+	padding: 5px 5px;
+}
+
+.active {
+   background-color: #8c8ce8;
+}
+
+#searchForm {
+	width: 100%;
+	text-align: center;
+	clear: both;
+}
+
+#searchForm select {
+	width: 120px;
+	height: 38px;
+}
+
+#searchForm #keyword {
+	width: 300px;
+	height: 35px;
+	padding-left: 10px;
+	outline: none;
+}
+
+#searchForm #searchBtn {
+	width: 100px;
+	height: 38px;
+	outline: none;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 1px solid #999;
+}
+
+#searchForm #searchBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}

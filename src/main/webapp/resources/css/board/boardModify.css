@@ -1,0 +1,76 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 1150px;
+	margin: 50px auto 100px auto;
+	height: 500px;
+}
+
+.headline {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#container h2 {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 1px solid #727272;
+}
+
+#textModify {
+	width: 60%;
+	height: 100%;
+	margin: 20px auto;
+}
+
+#textModify input {
+	padding: 5px 0 5px 10px;
+	outline: none;
+}
+
+#blind {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+#title {
+	width: 493px;
+}
+
+#content {
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.boardBtn {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.modiBtn {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: black;
+	border: 1px solid #999;
+	cursor: pointer;
+}
+
+.modiBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+}
+
+table td {
+	padding-left: 20px;
+}
+
+table th:not(:last-child) {
+	border-right: 1px solid #c0c0c0;
+	background-color: #8c8ce8;
+	color: white;
+}

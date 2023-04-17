@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.BookReviewMapper">
+<insert id="enrollBookReview">
+	insert into bookReview(num, isbn, id, nickname, content, rating) 
+	values (bookReview_seq.nextval, #{isbn}, #{id}, #{nickname}, #{content}, #{rating})
+</insert>
+<select id="checkBookReview" resultType="integer">
+	select num from bookReview where id=#{id} and isbn = #{isbn}
+</select>
+<!-- 댓글 페이징 -->
+<select id="getBookReviewList" resultType="com.book45.domain.BookReviewDTO">
+	<![CDATA[
+		select * from(  		
+		select rownum as rn, num, isbn, id, nickname, content, rating, writeDate
+		from bookReview
+		where rownum <= #{pageNum} * #{amount}  and isbn = #{isbn}	
+		order by writeDate desc)
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>	
+</select>
+<select id="getBookReviewTotal" resultType="int">
+	select count(*) from bookReview where isbn = #{isbn}
+</select>
+<!-- 댓글수정 -->
+<update id="updateBookReview">
+	update bookReview set content = #{content}, rating = #{rating} where num = #{num}
+</update>
+<select id="getUpdateBookReview" resultType="com.book45.domain.BookReviewDTO">
+	select * from bookReview where num = #{num}
+</select>
+<!-- 댓글 삭제 -->
+<delete id="deleteBookReview">
+	delete from bookReview where num = #{num}
+</delete>
+<select id="getRatingAverage" resultType="double">
+	select avg(rating) from bookReview where isbn = #{isbn}
+</select>
+<update id="updateRating">
+	update book set ratingAvg = #{ratingAvg} where isbn = #{isbn}
+</update>
+</mapper>

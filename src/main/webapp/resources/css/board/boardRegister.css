@@ -1,0 +1,91 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 1150px;
+	height: 500px;
+	margin: 50px auto 100px auto;
+}
+
+.headline {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#container h2 {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 1px solid #727272;
+}
+
+#register {
+	width: 60%;
+	height: 80%;
+	margin: 0 auto;
+}
+
+#register input {
+	padding: 5px 0 5px 10px;
+	outline: none;
+}
+
+#title {
+	width: 493px;
+}
+
+#content {
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+table td span {
+	font-size: 14px;
+}
+
+.boardBtn {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
+#register #RegiBtn {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: black;
+	border: 1px solid #666;
+}
+
+#register #resetBtn {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: black;
+	border: 1px solid #666;
+}
+#listBtn {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: black;
+	border: 1px solid #666;
+}
+
+#register #RegiBtn:hover, #register #resetBtn:hover, #listBtn:hover {
+	background-color: #8c8ce8;
+	color: white;
+	cursor: pointer;
+}
+
+table td {
+	padding-left: 20px;
+}
+
+table th:not(:last-child) {
+	border-right: 1px solid #c0c0c0;
+	background-color: #8c8ce8;
+	color: white;
+}

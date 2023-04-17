@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.AdminMapper">
+
+	<!-- 상품의 총 개수 반환 -->
+	<select id="getOrderTotal" resultType="int">
+		select count(*) from orders
+		<if test="keyword != null">
+			where id like '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	<!-- 회원 주문 리스트 -->
+	<select id="getOrderList" resultType="com.book45.domain.OrderDTO">
+		<![CDATA[
+			select * from (
+			select rownum rn, orderNum, id, orderState, orderDate 
+			from orders 
+			where 
+		]]>
+		<if test="keyword != null">
+			id like '%'||#{keyword}||'%' and
+		</if>
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount} order by orderDate)
+			where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+</mapper>

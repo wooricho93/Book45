@@ -1,0 +1,297 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Pretendard-Regular';
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* header */
+header{
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid #8c8ce8;
+    display: flex;
+    justify-content: space-between;
+}
+header #header {
+	width: 1150px;
+	margin: 0 auto;
+	height: 200px;
+}
+header #log{
+    width: 100%;
+    margin: 0 auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+herder #log ul {
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+}
+header #log li{
+    display: inline-block;
+    margin: 0 1px;
+    height: 100%;
+    align-items: center;
+}
+header #log li a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#log li a:HOVER {
+	color: #999999;
+}
+
+#hello {
+	font-size: 14px;
+}
+
+header #headnav {
+	width: 100%;
+	margin: 0 auto;
+	height: 120px;
+	display: flex;
+    align-items: center;
+    position: sticky;
+}
+
+#hlogo {
+	padding-top: 30px;	
+}
+
+header #headnav h1 {
+	float: left;
+	width: 300px;
+	height: 100px;
+}
+header #headnav h1 a {
+	text-decoration: none;
+	color: white;
+}
+header #headnav .search {
+	width: 600px;
+	height: 50px;
+	border: 2px solid #6363e0;
+	border-radius: 25px;
+	display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+header #headnav .search #hoption {
+	margin: 0 5px 0 10px;
+	padding: 10px;
+	border: none;
+	font-size: 14px;
+}
+header #headnav .search #hsearch {
+	width: 410px;
+	height: 40px;
+	border: none;
+	margin-left: 10px;
+	font-size: 14px;
+}
+
+#hoption:focus {
+	outline: none;	
+}
+
+#hsearch:focus {
+	outline: none;	
+}
+
+header #headnav .search button {
+	border: none;
+	background-color: white;
+}
+header #headnav .search #searchbu {
+	cursor: pointer;
+}
+
+#searchbu {
+	padding-left: 25px;
+}
+
+header nav {
+	width: 100%;
+	height: 50px;
+	margin: 0 auto;
+	/* background-color: orange; */
+}
+header nav ul.hlist1 {
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	float: left;
+}
+header nav ul.hlist1 li{
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+}
+header nav ul.hlist1 li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    -webkit-transition: color 700ms;
+    transition: color 700ms;
+}
+header nav ul.hlist1 li a:hover {
+   	color: #8c8ce8;
+}
+header nav ul.hlist1 li ul {
+	position: absolute;
+	display: none;
+	animation: swing 1s;
+	background-color: white;
+	border: 1px solid #c5c5f3;
+	line-height: 2px;
+}
+header nav ul.hlist1 li:hover ul {
+	display: block;
+}
+header nav ul.hlist1 li ul:hover {
+	display: block;
+}
+header nav ul.hlist1 li ul li a:hover {
+	color: #8c8ce8;
+}
+#keyframes swing {
+	15% {
+	transform: translateY(-5px);
+	}
+	30% {
+	transform: translateY(-5px);
+	}
+	50% {
+	transform: translateY(3px);
+	}
+	65% {
+	transform: translateY(-3px);
+	}
+	80% {
+	transform: translateY(2px);
+	}
+	100% {
+	transform: translateY(0);
+	}
+}
+header nav ul.hlist1 li ul li {
+	text-align: center;
+}
+header nav ul.hlist1 li:hover ul li a {
+	display:block !important;
+}
+header nav ul.hlist2 {
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	float: right;
+}
+header nav ul.hlist2 li{
+    display: inline-block;
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+    font-weight: bold;
+}
+header nav ul.hlist2 li a{
+    text-decoration: none;
+    color: black;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    height: 200px;
+    clear: both;
+}
+footer #foot1 {
+	width: 100%;
+	height: 80%;
+	float: left;
+	padding-top: 20px;
+}
+footer #foot1 h1 {
+	width: 300px;
+	height: 100px;
+}
+footer #foot1 #foot1-1 {
+	width: 100%;
+	height: 50px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+footer #foot1 #foot1-1 ul {
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+}
+footer #foot1 #foot1-1 ul li {
+	display: inline-block;
+   margin-right: 5px;
+    height: 100%;
+    align-items: center;
+}
+footer #foot1 #foot1-1 ul li a {
+	color: black;
+	font-size: 12px;
+}
+footer #foot1 #foot1-1 ul li a b {
+	text-decoration: underline;
+}
+footer #foot1 #foot1-2 {
+	width: 100%;
+	height: 100px;
+	line-height: 20px;
+}
+footer #foot1 #foot1-2 p {
+	font-size: 14px;
+}
+footer #foot2 {
+	width: 27%;
+	height: 100%;
+	float: right;
+}
+footer #foot2 p {
+	width: 100%;
+	font-size: 13px;
+}
+
+#foot1-2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#foot1-2 button {
+	background-color: white;
+	border: 1px solid #999999;
+	border-radius: 5px;
+	padding: 3px 5px;
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book45.mapper.CartMapper">
+	<!-- 장바구니에 책 추가 -->
+	<insert id="addBookCart">
+		<selectKey keyProperty="cartNum" order="BEFORE" resultType="int">
+			select cart_seq.nextval from dual
+		</selectKey>
+		insert into cart(cartNum, id, isbn, amount) values(#{cartNum}, #{id}, #{isbn}, #{amount})
+	</insert>
+	<!-- 장바구니에 앨범 추가 -->
+	<insert id="addAlbumCart">
+		<selectKey keyProperty="cartNum" order="BEFORE" resultType="int">
+			select cart_seq.nextval from dual
+		</selectKey>
+		insert into cart(cartNum, id, productNum, amount) values(#{cartNum}, #{id}, #{productNum}, #{amount})
+	</insert>
+	<!-- 수량 변경 -->
+	<update id="modifyCount">
+		update cart set amount = #{amount} where cartNum = #{cartNum}
+	</update>
+	<!-- 장바구니 아이템 삭제 -->
+	<delete id="deleteCart">
+		delete from cart where cartNum = #{cartNum}
+	</delete>
+	<!-- 장바구니 선택 삭제 -->
+	<delete id="selectDelete">
+		delete from cart where id = #{id} and cartNum = #{cartNum}
+	</delete>
+	<!-- 장바구니 전체 삭제 -->
+	<delete id="deleteAll">
+		delete from cart where id = #{id}
+	</delete>
+	<!-- 장바구니(책) 리스트 -->
+	<select id="getCartList" resultMap="cartList">
+		select c.cartNum, c.isbn, c.productNum, b.title, b.price, b.pictureUrl, a.albumTitle, a.albumPrice, a.albumPictureUrl, c.amount
+		from cart c left join book b on c.isbn = b.isbn left join album a on c.productNum = a.productNum
+		where id = #{id} order by cartNum
+	</select>
+	<!-- unread 수정 -->
+	<resultMap type="com.book45.domain.CartDTO" id="cartList">
+		<result property="cartNum" column="CARTNUM"/>
+		<result property="id" column="ID"/>
+		<result property="isbn" column="ISBN"/>
+		<result property="productNum" column="PRODUCTNUM"/>
+		<result property="amount" column="AMOUNT"/>
+		<result property="bookTitle" column="TITLE"/>
+		<result property="bookPrice" column="PRICE"/>
+		<result property="bookPictureUrl" column="PICTUREURL"/>
+		<result property="albumTitle" column="ALBUMTITLE"/>
+		<result property="albumPrice" column="ALBUMPRICE"/>
+		<result property="albumPictureUrl" column="ALBUMPICTUREURL"/>
+	</resultMap>
+	<!-- 장바구니(책) 확인 -->
+	<select id="checkBookCart" resultType="com.book45.domain.CartDTO">
+		select * from cart where id = #{id} and isbn = #{isbn}
+	</select>
+	<!-- 장바구니(앨범) 확인 -->
+	<select id="checkAlbumCart" resultType="com.book45.domain.CartDTO">
+		select * from cart where id = #{id} and productNum = #{productNum}
+	</select>
+	<!-- 주문 후 장바구니 비우기(도서) -->
+	<delete id="deleteBookOrderCart">
+		delete from cart where id = #{id} and isbn = #{isbn} 
+	</delete>
+	<!-- 주문 후 장바구니 비우기(앨범) -->
+	<delete id="deleteAlbumOrderCart">
+		delete from cart where id = #{id} and productNum = #{productNum}
+	</delete>
+</mapper>
