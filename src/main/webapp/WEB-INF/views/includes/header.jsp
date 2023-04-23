@@ -30,7 +30,7 @@
 					<c:otherwise>
 						<li id="hello">안녕하세요, ${member.name}님</li>
 						<li>&#124;</li>
-						<li><a href="/member/logout" id="logoutBtn">로그아웃</a></li>
+						<li><a id="logoutBtn">로그아웃</a></li>
 						<li>&#124;</li>
 						<li><a href="/cart/cartList/${member.id}">장바구니</a></li>
 						<li>&#124;</li>
@@ -160,7 +160,15 @@ $("#loginBtn3").on("click", function(){
  });
  
 $("#logoutBtn").click(function() {
-    alert("정상적으로 로그아웃되었습니다.");
+	$.ajax({
+		type: "POST",
+		url: "/member/logout.do",
+		success: function(data) {
+			alert("정상적으로 로그아웃되었습니다.");
+			document.location.reload();
+		}
+	});
+    
  });
  
  let searchForm = $("#search_form");
