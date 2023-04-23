@@ -218,7 +218,7 @@ public class MemberController {
 	}
 	
 	/* 비동기 방식 로그아웃 */
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	@RequestMapping(value = "/logout.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void logoutPost(HttpSession session) {
 		log.info("비동기 방식 로그아웃 시도 중");
