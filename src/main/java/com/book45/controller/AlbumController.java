@@ -103,7 +103,7 @@ public class AlbumController {
 			rttr.addFlashAttribute("result", "delete");
 		}
 		
-		return "redirect:/album/list" + cri.getListLink();
+		return "redirect:/admin/manageAlbum" + cri.getListLink();
 	}
 	
 	/* 리뷰 등록 */
