@@ -100,7 +100,7 @@
 		</table>
 		<input type="submit" value="도서 등록" id="RegBtn" class="Btn"> 
 		<input type="reset" value="다시 작성" class="Btn"> 
-		<input type="button" value="목록" class="Btn" onclick="location.href='/admin/manageBook'">
+		<input type="button" value="목록" class="Btn" onclick="history.back()">
 	</form>
 </div>
 	
