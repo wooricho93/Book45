@@ -105,7 +105,7 @@ public class BookController {
 			rttr.addFlashAttribute("result","delete");
 		}
 		
-		return "redirect:/book/list" +cri.getListLink();
+		return "redirect:/admin/manageBook" +cri.getListLink();
 	}
 	
 	/* 리뷰 등록 */
