@@ -91,7 +91,7 @@
 		</table>
 		<input type="submit" value="등록" id="RegBtn" class="Btn"> 
 		<input type="reset" value="다시 작성" class="Btn"> 
-		<input type="button" value="목록" class="Btn" onclick="location.href='/admin/manageAlbum'">
+		<input type="button" value="목록" class="Btn" onclick="history.back()">
 	</form>
 </div>
 
