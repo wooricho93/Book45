@@ -105,7 +105,7 @@
 		</table>
 		<button type="submit" id="modBtn" class="Btn">도서 수정</button>
 		<button type="submit" data-oper="remove" class="Btn" id="button">도서 삭제</button>
-		<button type="button" class="Btn" id="button" onclick="location.href='/admin/manageBook'">목록</button>
+		<button type="button" class="Btn" id="button" onclick="history.back()">목록</button>
 	</form>
 </div>
 
