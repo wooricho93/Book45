@@ -96,7 +96,7 @@
 		</table>
 		<button type="submit" id="modBtn" class="Btn">앨범 수정</button>
 		<button type="submit" data-oper="remove" class="Btn" id="button">앨범 삭제</button>
-		<button type="button" class="Btn" id="button" onclick="location.href='/admin/manageAlbum'">목록</button>
+		<button type="button" class="Btn" id="button" onclick="history.back()">목록</button>
 	</form> 
 </div>
 	
